@@ -1,0 +1,34 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <include file="example.xml"/>
+    <!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <action name="">
+            <result>login.jsp</result>
+        </action>
+        <action name="login" class="linhnd.controller.guests.LoginAction">
+            <result name="guest">search.jsp</result>
+            <result name="manager" type="redirectAction">manager</result>
+            <result name="fail">login.jsp</result>
+        </action>
+        <action name="registration">
+            <result>registration.jsp</result>
+        </action>
+        <action name="manager">
+            <result>manager.jsp</result>
+        </action>
+        <action name="logout" class="linhnd.controller.guests.LogoutAction">
+            <result name="success" type="redirect" >login.jsp</result>
+            <result name="fail">error.jsp</result>
+        </action>
+        <action name="search-action" class="linhnd.controller.guests.SearchAction">
+            <result name="success" >search.jsp</result>
+        </action>
+        <action name="signup" class="linhnd.controller.guests.SignupAction">
+            <result name="success">signup.jsp</result>
+        </action>
+    </package>
+</struts>

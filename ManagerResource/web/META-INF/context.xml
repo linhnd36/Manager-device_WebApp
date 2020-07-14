@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context path="/ManagerResource">
+    <Resource name="ManagerResource" 
+              auth="Container"
+              type="javax.sql.DataSource" 
+              driverClassName="org.postgresql.Driver"
+              url="jdbc:postgresql://ec2-34-206-31-217.compute-1.amazonaws.com:5432/ddgl9ok3gpjnas"
+              username="hdvxvewgymxkdq" 
+              password="1d5cd5e487a77c931d60f8b04b0d0534f51b23d8be0f64af7f645e386b6d4de4" 
+              maxActive="20" 
+              maxIdle="10"
+              maxWait="-1"/>
+</Context>
