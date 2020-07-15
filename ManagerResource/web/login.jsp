@@ -37,7 +37,7 @@
                 <div class="g-recaptcha" style="margin-left: 50px; margin-bottom: 10px"
                      data-sitekey="6Le1b60ZAAAAAGT215Aq72gVVkWcgP9SWIt43Bw-"></div>
                 <button type="submit" class="btn btn-success w-100">Login</button> 
-                <a class="btn btn-info w-100" style="margin-top: 10px; margin-bottom: 10px; color: white" href="registration">Registration</a>
+                <a class="btn btn-info w-100" style="margin-top: 10px; margin-bottom: 10px; color: white" href="signup.jsp">Registration</a>
             </form>
         </div>
     </body>
