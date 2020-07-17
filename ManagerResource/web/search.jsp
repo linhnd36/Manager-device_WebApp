@@ -18,6 +18,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
               integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <title>Search Page</title>
     </head>
 
     <body>
@@ -36,7 +37,7 @@
                             <span class="text-danger">Welcome <s:property value="%{#session.USER.name}"/> </span>
                         </li>
                     </ul>
-                    <a class="btn btn-outline-info my-2 my-sm-0 " style="color: white" href="logout"  >View Booking</a>
+                    <a class="btn btn-outline-info my-2 my-sm-0 " style="color: white" href="view-booking"  >View Booking</a>
                     <a class="btn btn-outline-primary my-2 my-sm-0 ml-2" style="color: white" href="logout"  >LogOut</a>
                 </div>
             </nav>
@@ -57,12 +58,12 @@
                 <div class="row mt-3">
                     <div class="form-group col-5">
                         <label for="formGroupExampleInput2">Date From:</label>
-                        <input type="date" class="form-control" name="dateSearchFrom" value="<s:property value="%{dateSearchFrom}"/>">
+                        <input type="date" class="form-control" min="<s:property value="%{#session.DATENOW}"/>" name="dateSearchFrom" value="<s:property value="%{dateSearchFrom}"/>">
                     </div>
                     <h5 class="mt-5">=======></h5>
                     <div class="form-group col-5">
                         <label for="formGroupExampleInput2">Date To:</label>
-                        <input type="date" class="form-control" name="dateSearchTo" value="<s:property value="%{dateSearchTo}"/>">
+                        <input type="date" class="form-control"  min="<s:property value="%{#session.DATENOW}"/>" name="dateSearchTo" value="<s:property value="%{dateSearchTo}"/>">
                     </div>
                 </div>
                 <button type="submit" class="btn btn-success w-25 mt-3">Search</button>
@@ -78,7 +79,15 @@
                                         <p class="card-text">Category : <s:property value="Category"/>   ---   Color: <s:property value="Color"/> --- Quantity: <s:property value="Quantity"/>
                                         </p>
                                         <p class="text-danger">Quantity Left: <s:property value="QuantityLeft"/></p>
-                                        <a href="#" class="btn btn-primary">Add to Booking</a>
+                                        <s:url var="urlAddLink" value="add-to-card" escapeAmp="false">
+                                            <s:param name="ResourceId" value="%{ResourceId}"/>
+                                            <s:param name="nameSearch" value="%{nameSearch}"/> 
+                                            <s:param name="categorySearch" value="%{categorySearch}"/> 
+                                            <s:param name="dateSearchFrom" value="%{dateSearchFrom}"/> 
+                                            <s:param name="dateSearchTo" value="%{dateSearchTo}"/> 
+                                        </s:url> 
+                                        <a href="<s:property value="%{#urlAddLink}"/>" class="btn btn-primary">Add to Booking</a>
+                                       
                                     </div>
                                 </div>
                             </div>

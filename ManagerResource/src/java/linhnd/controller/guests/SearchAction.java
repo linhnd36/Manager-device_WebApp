@@ -84,7 +84,6 @@ public class SearchAction {
                 end = listSearch.size();
             }
             subListResource = listSearch.subList(start, end);
-
         } catch (Exception e) {
             e.printStackTrace();
         }

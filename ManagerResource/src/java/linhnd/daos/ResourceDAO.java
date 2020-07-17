@@ -78,4 +78,28 @@ public class ResourceDAO implements Serializable {
         }
         return result;
     }
+
+    public ResourceDTO getOneResource(String resourceId) throws SQLException, NamingException {
+        ResourceDTO dto = null;
+        try {
+            conn = MyConnection.getConnection();
+            if (conn != null) {
+                String sql = " SELECT \"ResourceId\",\"ItemName\",\"Category\",\"Quantity\",\"Color\" FROM \"public\".\"Resource\" WHERE \"ResourceId\" = ? ";
+                stm = conn.prepareCall(sql);
+                stm.setString(1, resourceId);
+                rs = stm.executeQuery();
+                dto = new ResourceDTO();
+                if (rs.next()) {
+                    dto.setResourceId(rs.getString("ResourceId"));
+                    dto.setItemName(rs.getString("ItemName"));
+                    dto.setCategory(rs.getString("Category"));
+                    dto.setQuantity(rs.getInt("Quantity"));
+                    dto.setColor(rs.getString("Color"));
+                }
+            }
+        } finally {
+            close();
+        }
+        return dto;
+    }
 }

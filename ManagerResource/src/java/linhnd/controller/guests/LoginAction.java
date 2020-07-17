@@ -6,6 +6,8 @@
 package linhnd.controller.guests;
 
 import com.opensymphony.xwork2.ActionContext;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import linhnd.daos.UserDAO;
@@ -24,7 +26,7 @@ public class LoginAction {
     private static final String FAIL = "fail";
     private String username;
     private String password;
-    private String error ;
+    private String error;
 
     public LoginAction() {
     }
@@ -47,6 +49,9 @@ public class LoginAction {
                     if (dto.getRoleId().equals("MANAGER")) {
                         url = MANAGER;
                     } else {
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        Date dateNow = new Date(System.currentTimeMillis());
+                        sesstion.put("DATENOW", format.format(dateNow));
                         url = GUEST;
                     }
                 } else {

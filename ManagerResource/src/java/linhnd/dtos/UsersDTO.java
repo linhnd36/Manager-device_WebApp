@@ -18,6 +18,17 @@ public class UsersDTO implements Serializable {
     public UsersDTO() {
     }
 
+    public UsersDTO(String Email, String Password, String Name, String Adress, String Phone, String RoleId, String StatusId) {
+        this.Email = Email;
+        this.Password = Password;
+        this.Name = Name;
+        this.Adress = Adress;
+        this.Phone = Phone;
+        this.RoleId = RoleId;
+        this.StatusId = StatusId;
+    }
+    
+
     public void setEmail(String Email) {
         this.Email = Email;
     }

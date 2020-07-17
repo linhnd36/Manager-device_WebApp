@@ -9,13 +9,13 @@
         <action name="">
             <result>login.jsp</result>
         </action>
-        <action name="login" class="linhnd.controller.guests.LoginAction">
-            <result name="guest">search.jsp</result>
-            <result name="manager" type="redirectAction">manager</result>
-            <result name="fail">login.jsp</result>
+        <action name="login">
+            <result>login.jsp</result>
         </action>
-        <action name="registration">
-            <result>registration.jsp</result>
+        <action name="login" class="linhnd.controller.guests.LoginAction">
+            <result name="guest" type="redirect">search.jsp</result>
+            <result name="manager" type="redirectAction">manager</result>
+            <result name="fail" >login.jsp</result>
         </action>
         <action name="manager">
             <result>manager.jsp</result>
@@ -28,7 +28,23 @@
             <result name="success" >search.jsp</result>
         </action>
         <action name="signup" class="linhnd.controller.guests.SignupAction">
-            <result name="success">signup.jsp</result>
+            <result name="success" type="redirectAction">send-code-mail</result>
+            <result name="failed">signup.jsp</result>
         </action>
+        <action name="send-code-mail" class="linhnd.controller.guests.SendCodeMailAction" >
+            <result name="success">confirmMail.jsp</result>
+            <result name="failed">login.jsp</result>
+        </action>
+        <action name="confirm-mail" class="linhnd.controller.guests.ConfirmMailAction">
+            <result name="success" type="redirect" >login.jsp</result>
+            <result name="failed">confirmMail.jsp</result>
+        </action>
+        <action name="add-to-card" class="linhnd.controller.guests.AddResourceToBookingAction">
+            <result name="success" type="chain">search-action</result>
+        </action>
+        <action name="view-booking" >
+            <result name="success">viewBooking.jsp</result>
+        </action>
+        
     </package>
 </struts>

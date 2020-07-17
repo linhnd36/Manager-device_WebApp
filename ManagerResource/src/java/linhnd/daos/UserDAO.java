@@ -7,9 +7,12 @@ package linhnd.daos;
 
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import javax.naming.NamingException;
 import linhnd.db.MyConnection;
 import linhnd.dtos.UsersDTO;
@@ -79,6 +82,47 @@ public class UserDAO implements Serializable {
             close();
         }
         return dto;
+    }
+
+    public boolean newUser(UsersDTO dto) throws SQLException, NamingException, ParseException {
+        boolean check = false;
+        try {
+            conn = MyConnection.getConnection();
+            if (conn != null) {
+                String sql = " INSERT INTO \"Users\" (\"Email\",\"Password\",\"Name\",\"Address\",\"Phone\",\"CreateDate\",\"RoleId\",\"StatusId\") "
+                        + " VALUES (?,?,?,?,?,?,?,?) ";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, dto.getEmail());
+                stm.setString(2, dto.getPassword());
+                stm.setString(3, dto.getName());
+                stm.setString(4, dto.getAdress());
+                stm.setString(5, dto.getPhone());
+                stm.setDate(6, new Date(System.currentTimeMillis()));
+                stm.setString(7, dto.getRoleId());
+                stm.setString(8, dto.getStatusId());
+                check = stm.executeUpdate() > 0;
+            }
+        } finally {
+            close();
+        }
+        return check;
+    }
+
+    public boolean updateStatustUser(String Email) throws SQLException, NamingException {
+        boolean check = false;
+        try {
+            conn = MyConnection.getConnection();
+            if (conn != null) {
+                String sql = " UPDATE \"Users\" SET \"StatusId\" = ? WHERE \"Email\" = ? ";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, "ACTIVE");
+                stm.setString(2, Email);
+                check = stm.executeUpdate() > 0;
+            }
+        } finally {
+            close();
+        }
+        return check;
     }
 
 }

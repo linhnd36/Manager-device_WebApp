@@ -20,24 +20,49 @@
     <body class="bgLogin">
         <div class="loginclass">
             <form action="signup" method="POST" class="p-4"
-                  style="background-color: white; margin-top: 50px; border-radius: 2%; ">
+                  style="background-color: white; margin-top: -50px; border-radius: 2%; ">
                 <h1 class="text-center">Manager Resource</h1>
-                <h4 class="text-center">SignUp</h4>
+                <h4 class="text-center">Sign Up</h4>
+                <s:if test="%{Errors.EmptyError != null}">
+                    <div class="alert alert-danger" role="alert">
+                        <s:property value="%{Errors.EmptyError}"/>
+                    </div>
+                </s:if>
                 <div class="form-group">
                     <label>Email :</label>
                     <input type="email" class="form-control" placeholder="Enter email" name="Email">
+                    <s:if test="%{Errors.emailIsExisted != null}">
+                        <div class="alert alert-danger" role="alert">
+                            <s:property value="%{Errors.emailIsExisted}"/>
+                        </div>
+                    </s:if>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password :</label>
                     <input type="password" class="form-control" placeholder="Enter Password" name="Password">
+                    <s:if test="%{Errors.passwordLengthError != null}">
+                        <div class="alert alert-danger" role="alert">
+                            <s:property value="%{Errors.passwordLengthError}"/>
+                        </div>
+                    </s:if>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password Confirm:</label>
-                    <input type="password" class="form-control" placeholder="Enter Password Confirm:" name="PasswordConfirm:">
+                    <input type="password" class="form-control" placeholder="Enter Password Confirm:" name="PasswordConfirm">
+                    <s:if test="%{Errors.confirmNotMatched != null}">
+                        <div class="alert alert-danger" role="alert">
+                            <s:property value="%{Errors.confirmNotMatched}"/>
+                        </div>
+                    </s:if>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Name :</label>
                     <input type="text" class="form-control" placeholder="Enter name" name="Name">
+                    <s:if test="%{Errors.fullNameLengthError != null}">
+                        <div class="alert alert-danger" role="alert">
+                            <s:property value="%{Errors.fullNameLengthError}"/>
+                        </div>
+                    </s:if>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Phone :</label>

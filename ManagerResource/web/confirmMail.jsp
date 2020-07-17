@@ -15,30 +15,24 @@
               integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <link rel="stylesheet" href="css/style.css">
         <script src="https://www.google.com/recaptcha/api.js"></script>
-        <title>Login Page</title>
+        <title>ConFirm Mail Page</title>
     </head>
     <body class="bgLogin">
         <div class="loginclass">
-            <form action="login" method="POST" class="p-4" style="background-color: white; margin-top: 50px; border-radius: 2%;">
+            <form action="confirm-mail" method="POST" class="p-4" style="background-color: white; margin-top: 50px; border-radius: 2%;">
                 <h1 class="text-center">Manager Resource</h1>
-                <h4 class="text-center">Login</h4>
-                <s:if test="%{error != null }">
+                <h4 class="text-center">ConFirm Mail</h4>
+                <p>Check your mail and get Code !</p>
+                <div class="form-group">
+                    <label >Code :</label>
+                    <input type="text" class="form-control" placeholder="Enter Code" name="code" value="">
+                </div>
+                <s:if test="%{errors != null}">
                     <div class="alert alert-danger" role="alert">
-                        <s:property value="%{error}"/>
+                        <s:property value="errors"/>
                     </div>
                 </s:if>
-                <div class="form-group">
-                    <label >Email :</label>
-                    <input type="email" class="form-control" placeholder="Enter username" name="username" value="">
-                </div>
-                <div class="form-group">
-                    <label for="pwd">Password :</label>
-                    <input type="password" class="form-control" placeholder="Enter password" name="password" value="">
-                </div>
-                <div class="g-recaptcha" style="margin-left: 50px; margin-bottom: 10px"
-                     data-sitekey="6Le1b60ZAAAAAGT215Aq72gVVkWcgP9SWIt43Bw-"></div>
-                <button type="submit" class="btn btn-success w-100">Login</button> 
-                <a class="btn btn-info w-100" style="margin-top: 10px; margin-bottom: 10px; color: white" href="signup.jsp">Registration</a>
+                <button type="submit" class="btn btn-success w-100">Confirm</button> 
             </form>
         </div>
     </body>
