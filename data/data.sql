@@ -5,7 +5,7 @@
 -- Dumped from database version 12.3 (Ubuntu 12.3-1.pgdg16.04+1)
 -- Dumped by pg_dump version 12.3
 
--- Started on 2020-07-13 16:20:30
+-- Started on 2020-07-19 19:10:48
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -116,6 +116,104 @@ CREATE TABLE public."Users" (
 
 
 ALTER TABLE public."Users" OWNER TO hdvxvewgymxkdq;
+
+--
+-- TOC entry 3877 (class 0 OID 10200880)
+-- Dependencies: 206
+-- Data for Name: Booking; Type: TABLE DATA; Schema: public; Owner: hdvxvewgymxkdq
+--
+
+COPY public."Booking" ("BookingId", "DateRequest", "DateBookingFrom", "DateBookingTo", "StatusId", "Email") FROM stdin;
+BOOK1	2020-07-13	2020-07-13	2020-07-14	NEWREQ	leader@gmail.com
+BOOK2	2020-07-13	2020-07-14	2020-07-15	ACCEPTREQ	leader@gmail.com
+leader@gmail.com2020-07-19 18:32:01+0700	2020-07-19	2020-07-19	2020-07-21	NEWREQ	leader@gmail.com
+leader@gmail.com2020-07-19 18:46:47+0700	2020-07-19	2020-07-19	2020-07-25	NEWREQ	leader@gmail.com
+leader@gmail.com2020-07-19 19:00:48+0700	2020-07-19	2020-07-19	2020-07-23	NEWREQ	leader@gmail.com
+leader@gmail.com19:05:16+0700	2020-07-19	2020-07-19	2020-07-21	NEWREQ	leader@gmail.com
+leader@gmail.com19:07:53+0700	2020-07-19	2020-07-19	2020-07-22	NEWREQ	leader@gmail.com
+\.
+
+
+--
+-- TOC entry 3878 (class 0 OID 10200897)
+-- Dependencies: 207
+-- Data for Name: BookingDetail; Type: TABLE DATA; Schema: public; Owner: hdvxvewgymxkdq
+--
+
+COPY public."BookingDetail" ("BookingDetailId", "Amount", "BookingId", "ResourceId") FROM stdin;
+BD1	1	BOOK1	TABLE01
+BD2	1	BOOK2	TABLE01
+leader@gmail.com2020-07-19 18:32:01+0700TIVI01	1	leader@gmail.com2020-07-19 18:32:01+0700	TIVI01
+leader@gmail.com2020-07-19 18:46:47+0700TIVI01	1	leader@gmail.com2020-07-19 18:46:47+0700	TIVI01
+leader@gmail.com19:05:16+0700MEETINGROOM	1	leader@gmail.com19:05:16+0700	MEETINGROOM
+leader@gmail.com19:07:53+0700MEETINGROOM	1	leader@gmail.com19:07:53+0700	MEETINGROOM
+\.
+
+
+--
+-- TOC entry 3876 (class 0 OID 10200869)
+-- Dependencies: 205
+-- Data for Name: Resource; Type: TABLE DATA; Schema: public; Owner: hdvxvewgymxkdq
+--
+
+COPY public."Resource" ("ResourceId", "ItemName", "Category", "Quantity", "Color", "HighestOfRole", "StatusId") FROM stdin;
+TABLE01	Table 2 people	Table	10	Black	EMP	RESACTIVE
+IPAD01	Ipad pro 2020	Ipad	1	Black	LEADER	RESACTIVE
+LAPTOPDELL	Laptop Dell 2018	Laptop	10	Black	EMP	RESACTIVE
+MEETINGROOM	Meeting Room	Room	10	No	LEADER	RESACTIVE
+PROJECTOR	Projectors	Projectors	5	Black	EMP	RESACTIVE
+PHOTOCOPIERS	Photocopiers HP	Photocopiers	5	Black	EMP	RESACTIVE
+TABLE02	Table 4 People	Table	2	Black	EMP	RESACTIVE
+CAMERA01	Camera Canon	Camera	5	Black	LEADER	RESACTIVE
+COMPUTERSCREEN	Computer Screen Dell	Computer screen	5	Black	EMP	RESACTIVE
+TIVI01	Tivi sony 32inh	Tivi	3	Black	EMP	RESACTIVE
+\.
+
+
+--
+-- TOC entry 3874 (class 0 OID 10200847)
+-- Dependencies: 203
+-- Data for Name: Role; Type: TABLE DATA; Schema: public; Owner: hdvxvewgymxkdq
+--
+
+COPY public."Role" ("RoleId", "Name") FROM stdin;
+MANAGER	Manager
+LEADER	Leader
+EMP	Employess
+\.
+
+
+--
+-- TOC entry 3873 (class 0 OID 10200842)
+-- Dependencies: 202
+-- Data for Name: Status; Type: TABLE DATA; Schema: public; Owner: hdvxvewgymxkdq
+--
+
+COPY public."Status" ("StatusId", "Name") FROM stdin;
+NEW	New user
+ACTIVE	User active
+NEWREQ	New Request
+DELETEREQ	Delete Request
+ACCEPTREQ	Accept Request
+RESACTIVE	Resource Active
+RESNOACTIVE	Resource No Active
+\.
+
+
+--
+-- TOC entry 3875 (class 0 OID 10200852)
+-- Dependencies: 204
+-- Data for Name: Users; Type: TABLE DATA; Schema: public; Owner: hdvxvewgymxkdq
+--
+
+COPY public."Users" ("Email", "Password", "Name", "Address", "Phone", "CreateDate", "RoleId", "StatusId") FROM stdin;
+admin@gmail.com	1	Nguyen Duc Linh	vo chi cong	0822201933	2020-07-07	MANAGER	ACTIVE
+leader@gmail.com	1	Leader Name	Le Van Viet	0822201933	2020-07-13	LEADER	ACTIVE
+employee@gmail.com	1	Employee Name	Nguyen Duy Trinh	0822201933	2020-07-13	EMP	ACTIVE
+hoangpd@gmail.com	123456	Duc Hoang	Quan 9 - TP HCM	0961622020	2020-07-16	EMP	ACTIVE
+linhnguyen131999@gmail.com	123456	linh linh	sss	0822201930	2020-07-18	EMP	ACTIVE
+\.
+
 
 --
 -- TOC entry 3733 (class 2606 OID 10200884)
@@ -291,7 +389,7 @@ ALTER TABLE ONLY public."BookingDetail"
 
 
 --
--- TOC entry 3878 (class 0 OID 0)
+-- TOC entry 3884 (class 0 OID 0)
 -- Dependencies: 644
 -- Name: LANGUAGE plpgsql; Type: ACL; Schema: -; Owner: postgres
 --
@@ -299,7 +397,7 @@ ALTER TABLE ONLY public."BookingDetail"
 GRANT ALL ON LANGUAGE plpgsql TO hdvxvewgymxkdq;
 
 
--- Completed on 2020-07-13 16:20:52
+-- Completed on 2020-07-19 19:11:13
 
 --
 -- PostgreSQL database dump complete

@@ -19,6 +19,7 @@ import linhnd.dtos.ResourceDTO;
 public class ManagerBooking {
 
     private Map<String, ResourceInBookingDTO> booking;
+    private String DateBookingFrom, DateBookingTo;
 
     public Map<String, ResourceInBookingDTO> getBooking() {
         return booking;
@@ -33,20 +34,16 @@ public class ManagerBooking {
         }
         if (this.booking == null) {
             this.booking = new HashMap<>();
-        } else {
-            Map.Entry<String, ResourceInBookingDTO> entry = booking.entrySet().iterator().next();
-            dateBookingFrom = entry.getValue().getDateBookingFrom();
-            dateBookingTo = entry.getValue().getDateBookingTo();
+            this.DateBookingFrom = dateBookingFrom;
+            this.DateBookingTo = dateBookingTo;
         }
         ResourceDAO dao = new ResourceDAO();
         ResourceDTO dtoB = dao.getOneResource(ResourceId);
         int quatity = 1;
         if (this.booking.containsKey(ResourceId)) {
             quatity = this.booking.get(ResourceId).getQuantity() + 1;
-            dateBookingFrom = this.booking.get(ResourceId).getDateBookingFrom();
-            dateBookingTo = this.booking.get(ResourceId).getDateBookingTo();
         }
-        ResourceInBookingDTO dto = new ResourceInBookingDTO(dtoB, dateBookingFrom, dateBookingTo, quatity);
+        ResourceInBookingDTO dto = new ResourceInBookingDTO(dtoB, quatity);
         this.booking.put(ResourceId, dto);
     }
 
@@ -62,23 +59,29 @@ public class ManagerBooking {
         }
     }
 
-    public void increaseQuantityResource(String ResourceId) {
+    public void updateQuantityResource(String ResourceId, String newQuantity) throws Exception {
         if (this.booking == null) {
             return;
         }
         if (this.booking.containsKey(ResourceId)) {
-            this.booking.get(ResourceId).setQuantity(this.booking.get(ResourceId).getQuantity() + 1);
+            this.booking.get(ResourceId).setQuantity(Integer.parseInt(newQuantity));
         }
     }
 
-    public void reductionQuantityResource(String ResourceId) {
-        if (this.booking == null) {
-            return;
-        }
-        if (this.booking.containsKey(ResourceId)) {
-            if (this.booking.get(ResourceId).getQuantity() > 1) {
-                this.booking.get(ResourceId).setQuantity(this.booking.get(ResourceId).getQuantity() - 1);
-            }
-        }
+    public String getDateBookingFrom() {
+        return DateBookingFrom;
     }
+
+    public String getDateBookingTo() {
+        return DateBookingTo;
+    }
+
+    public void setDateBookingFrom(String DateBookingFrom) {
+        this.DateBookingFrom = DateBookingFrom;
+    }
+
+    public void setDateBookingTo(String DateBookingTo) {
+        this.DateBookingTo = DateBookingTo;
+    }
+
 }

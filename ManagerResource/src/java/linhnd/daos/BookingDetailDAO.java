@@ -61,4 +61,24 @@ public class BookingDetailDAO implements Serializable {
         }
         return result;
     }
+
+    public boolean newBookingDetail(String BookingDetailId, int Amount, String BookingId, String ResourceId) throws Exception {
+        boolean check = false;
+        try {
+            conn = MyConnection.getConnection();
+            if (conn != null) {
+                String sql = " INSERT INTO \"BookingDetail\" (\"BookingDetailId\",\"Amount\",\"BookingId\",\"ResourceId\")  "
+                        + " VALUES (?,?,?,?) ";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, BookingDetailId);
+                stm.setInt(2, Amount);
+                stm.setString(3, BookingId);
+                stm.setString(4, ResourceId);
+                check = stm.executeUpdate() > 0;
+            }
+        } finally {
+            close();
+        }
+        return check;
+    }
 }

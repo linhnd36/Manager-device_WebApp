@@ -49,33 +49,45 @@ public class MainFilter implements Filter {
         guests.add("''");
         guests.add("login");
         guests.add("login.action");
-        guests.add("logout");
-        guests.add("logout.action");
         guests.add("signup");
         guests.add("signup.action");
         guests.add("send-code-mail");
         guests.add("send-code-mail.action");
         guests.add("confirm-mail");
         guests.add("confirm-mail.action");
+        guests.add("error.jsp");
 
         manager = new ArrayList<>();
         manager.add("login.jsp");
         manager.add("manager.jsp");
         manager.add("manager");
         manager.add("manager.action");
+        manager.add("logout.action");
+        manager.add("logout");
+        manager.add("error.jsp");
 
         leaderEmp = new ArrayList<>();
         leaderEmp.add("login.jsp");
         leaderEmp.add("login");
+        leaderEmp.add("logout");
+        leaderEmp.add("logout.action");
         leaderEmp.add("login.action");
         leaderEmp.add("search.jsp");
         leaderEmp.add("viewBooking.jsp");
+        leaderEmp.add("viewBooking1.jsp");
         leaderEmp.add("search-action");
         leaderEmp.add("search-action.action");
         leaderEmp.add("add-to-card");
         leaderEmp.add("add-to-card.action");
         leaderEmp.add("view-booking");
         leaderEmp.add("view-booking.action");
+        leaderEmp.add("error.jsp");
+        leaderEmp.add("update-cart");
+        leaderEmp.add("update-cart.action");
+        leaderEmp.add("delete-booking.action");
+        leaderEmp.add("delete-booking");
+        leaderEmp.add("check-out");
+        leaderEmp.add("check-out.action");
 
     }
 
@@ -162,6 +174,7 @@ public class MainFilter implements Filter {
                 if (guests.contains(resource)) {
                     chain.doFilter(request, response);
                 } else {
+                    res.sendRedirect("login.jsp");
                 }
             } else {
                 UsersDTO dto = (UsersDTO) session.getAttribute("USER");

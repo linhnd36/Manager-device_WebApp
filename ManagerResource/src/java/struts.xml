@@ -42,9 +42,21 @@
         <action name="add-to-card" class="linhnd.controller.guests.AddResourceToBookingAction">
             <result name="success" type="chain">search-action</result>
         </action>
-        <action name="view-booking" >
+        <action name="view-booking" class="linhnd.controller.guests.ViewBookingAction">
             <result name="success">viewBooking.jsp</result>
+            <result name="failed">error.jsp</result>
+        </action>   
+        <action name="update-cart" class="linhnd.controller.guests.UpdateBookingAction">
+            <result name="success">viewBooking.jsp</result>
+            <result name="failed">errors.jsp</result>
+        </action>    
+        <action name="delete-booking" class="linhnd.controller.guests.DeleteBookingAction">
+            <result name="success">viewBooking.jsp</result>
+            <result name="failed">error.jsp</result>
         </action>
-        
+        <action name="check-out" class="linhnd.controller.guests.CheckOutAction">
+            <result name="success">search.jsp</result>
+            <result name="failed">viewBooking.jsp</result>
+        </action>
     </package>
 </struts>

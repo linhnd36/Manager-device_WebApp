@@ -31,15 +31,15 @@ public class LoginAction {
     public LoginAction() {
     }
 
-    public String execute() throws Exception {
+    public String execute() {
 
         String url = FAIL;
-
-        HttpServletRequest request = ServletActionContext.getRequest();
-        String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
-        boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
-
         try {
+            
+            HttpServletRequest request = ServletActionContext.getRequest();
+            String gRecaptchaResponse = request.getParameter("g-recaptcha-response");
+            boolean verify = VerifyRecaptcha.verify(gRecaptchaResponse);
+
             Map sesstion = ActionContext.getContext().getSession();
             UserDAO dao = new UserDAO();
             if (dao.checkLogin(username, password)) {

@@ -23,7 +23,7 @@ public class ConfirmMailAction {
     public ConfirmMailAction() {
     }
 
-    public String execute() throws Exception {
+    public String execute(){
         String url = FAILED;
         try {
             Map session = ActionContext.getContext().getSession();

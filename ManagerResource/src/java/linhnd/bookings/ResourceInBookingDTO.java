@@ -15,29 +15,18 @@ import linhnd.dtos.ResourceDTO;
 public class ResourceInBookingDTO implements Serializable {
 
     private ResourceDTO ResourceDTO;
-    private String DateBookingFrom, DateBookingTo;
     private int Quantity;
 
     public ResourceInBookingDTO() {
     }
 
-    public ResourceInBookingDTO(ResourceDTO ResourceDTO, String DateBookingFrom, String DateBookingTo, int Quantity) {
+    public ResourceInBookingDTO(ResourceDTO ResourceDTO, int Quantity) {
         this.ResourceDTO = ResourceDTO;
-        this.DateBookingFrom = DateBookingFrom;
-        this.DateBookingTo = DateBookingTo;
         this.Quantity = Quantity;
     }
 
     public ResourceDTO getResourceDTO() {
         return ResourceDTO;
-    }
-
-    public String getDateBookingFrom() {
-        return DateBookingFrom;
-    }
-
-    public String getDateBookingTo() {
-        return DateBookingTo;
     }
 
     public int getQuantity() {
@@ -46,14 +35,6 @@ public class ResourceInBookingDTO implements Serializable {
 
     public void setResourceDTO(ResourceDTO ResourceDTO) {
         this.ResourceDTO = ResourceDTO;
-    }
-
-    public void setDateBookingFrom(String DateBookingFrom) {
-        this.DateBookingFrom = DateBookingFrom;
-    }
-
-    public void setDateBookingTo(String DateBookingTo) {
-        this.DateBookingTo = DateBookingTo;
     }
 
     public void setQuantity(int Quantity) {

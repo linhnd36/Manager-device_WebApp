@@ -7,31 +7,41 @@ package linhnd.controller.guests;
 
 import com.opensymphony.xwork2.ActionContext;
 import java.util.Map;
-import linhnd.dtos.UsersDTO;
+import linhnd.bookings.ManagerBooking;
 
 /**
  *
  * @author PC
  */
-public class LogoutAction {
+public class DeleteBookingAction {
 
     private static final String SUCCESS = "success";
-    private static final String FAIL = "fail";
+    private static final String FAILED = "failed";
+    private String ResourceId;
 
-    public LogoutAction() {
+    public DeleteBookingAction() {
     }
 
     public String execute() {
-        System.out.println("check loout");
-        String url = FAIL;
+        String url = FAILED;
         try {
             Map session = ActionContext.getContext().getSession();
-            session.remove("USER");
+            ManagerBooking manager = (ManagerBooking) session.get("BOOKING");
+            manager.removeResourceFromBooking(ResourceId);
             url = SUCCESS;
+            session.put("BOOKING", manager);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return url;
+    }
+
+    public String getResourceId() {
+        return ResourceId;
+    }
+
+    public void setResourceId(String ResourceId) {
+        this.ResourceId = ResourceId;
     }
 
 }

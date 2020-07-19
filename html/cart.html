@@ -31,45 +31,43 @@
         </nav>
     </header>
     <div class="container">
+        
         <table id="cart" class="table table-hover table-condensed">
             <thead>
                 <tr>
-                    <th style="width: 52%;">Tour</th>
-                    <th style="width: 10%;">Price</th>
+                    <th style="width: 32%;">Tour</th>
+                    <th style="width: 10%;">ID</th>
+                    <th style="width: 15%;">Category</th>
+                    <th style="width: 10%;">Color</th>
                     <th style="width: 8%;">Quantity</th>
-                    <th style="width: 20%;" class="text-center">Subtotal</th>
                     <th style="width: 10%;">Action</th>
                 </tr>
             </thead>
             <tbody>
+
                 <form action="update-cart">
                     <tr>
                         <td>
                             <div class="row">
                                 <div class="col-sm-7">
-                                    <h4 class="nomargin">$</h4>
+                                    <h5 class="nomargin">Name item</h5>
                                 </div>
                             </div>
                         </td>
-                        <td data-th="Price">${dto.price}$</td>
+                        <td data-th="Price">Id </td>
+                        <td data-th="Price">Category </td>
+                        <td data-th="Price">Color </td>
                         <td data-th="Quantity">
-                            <input type="number" class="form-control text-center" name="txtQuantityNew"
-                                 min="1" />
-                            <p class="text-danger">Only  tickets left.</p>
-                        </td>
-                        <td data-th="Subtotal" class="text-center">
-                            ${tourMap.value.quantity * dto.price }$
-                            <p class="text-danger">Please update again amount or remove the tour from the cart.</p>
+                            <input type="number" class="form-control text-center" name="txtQuantityNew" min="1" />
+                            <p class="text-danger">Only tickets left.</p>
                         </td>
                         <td class="actions" data-th="">
-
                             <button type="submit" class="btn btn-info">Update</button>
-                            <a href="${deleteUrl}" class="btn btn-danger">Delete</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
                             <input type="hidden" name="tourId" value="${dto.tourID}" />
                         </td>
                     </tr>
                 </form>
-
             </tbody>
             <tfoot>
                 <tr>
@@ -78,82 +76,13 @@
                             Shopping</a>
                     </td>
                     <td colspan="2" class="hidden-xs"></td>
-                    <td class="hidden-xs text-center">
-                        <strong>Total ${sessionScope.TOTAL_BOOKING}$</strong>
-                    </td>
                     <td>
                         <a href="${checkOutUrl}" class="btn btn-success btn-block">Checkout <i
-                                class="fa fa-angle-right"></i></a>
-
-                        <a href="${checkOutUrlPayPal}" class="btn btn-info btn-block">Checkout PayPal<i
                                 class="fa fa-angle-right"></i></a>
                     </td>
                 </tr>
             </tfoot>
         </table>
-        <div class="row">
-            <div class="col-8">
-
-
-            </div>
-            <div class="col-4">
-                <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-muted">Your cart</span>
-                </h4>
-                <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Total Tour:</h6>
-                        </div>
-                        <span class="text-muted">${sessionScope.TOTAL_BOOKING}$</span>
-                    </li>
-
-                    <li class="list-group-item d-flex justify-content-between bg-light">
-                        <div class="text-success">
-                            <h6 class="my-0">Promo code</h6>
-                        </div>
-                        <span class="text-success">- ${moneyDiscount}$</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (USD)</span>
-                        <strong>${sessionScope.TOTAL_BOOKING - moneyDiscount}$</strong>
-                    </li>
-                </ul>
-
-                <form class="card p-2" action="check-discount">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="txtDiscountCode" placeholder="Discount code"
-                            value="${param.txtDiscountCode}">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-secondary">Check Code</button>
-                        </div>
-                    </div>
-
-
-                    <div class="alert alert-success" role="alert">
-                        You can user this code !
-                    </div>
-
-
-                    <div class="alert alert-danger" role="alert">
-                        Error Code !
-                    </div>
-
-                </form>
-            </div>
-        </div>
-
-
-        <div class="alert alert-danger" role="alert">
-            No Tour in Cart !
-        </div>
-
-
-        <div class="alert alert-success" role="alert">
-            ${requestScope.CHECK_OUT_SUCESS}
-        </div>
-        <a href="paging-page-search" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
             crossorigin="anonymous"></script>

@@ -8,10 +8,9 @@ package linhnd.controller.guests;
 import com.opensymphony.xwork2.ActionContext;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 import linhnd.bookings.ManagerBooking;
-import linhnd.bookings.ResourceInBookingDTO;
 
 /**
  *
@@ -26,7 +25,8 @@ public class AddResourceToBookingAction {
     public AddResourceToBookingAction() {
     }
 
-    public String execute() throws Exception {
+    public String execute() {
+
         Map session = ActionContext.getContext().getSession();
         try {
 
