@@ -35,7 +35,7 @@ public class BookingDetailDAO implements Serializable {
         }
     }
 
-    public int countResourceInBookingDetail(String dateSearchFrom, String dateSearchTo, String resourceId) throws NamingException, SQLException {
+    public int countResourceInBookingDetail(String dateSearchFrom, String dateSearchTo, String resourceId) throws NamingException, SQLException, Exception {
         int result = 0;
         try {
             conn = MyConnection.getConnection();

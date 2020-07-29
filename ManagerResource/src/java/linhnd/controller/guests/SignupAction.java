@@ -33,7 +33,7 @@ public class SignupAction {
     public SignupAction() {
     }
 
-    public String execute() {
+    public String execute() throws Exception {
         Map session = ActionContext.getContext().getSession();
         String url = FAILED;
         Errors = new AccountCrearteError();

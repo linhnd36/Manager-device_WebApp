@@ -25,7 +25,7 @@ public class ManagerBooking {
         return booking;
     }
 
-    public void addResourceToBooking(String ResourceId, String dateBookingFrom, String dateBookingTo) throws SQLException, NamingException {
+    public void addResourceToBooking(String ResourceId, String dateBookingFrom, String dateBookingTo) throws SQLException, NamingException, Exception {
         if (ResourceId == null) {
             return;
         }

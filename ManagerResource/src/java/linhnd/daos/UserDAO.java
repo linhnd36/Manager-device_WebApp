@@ -39,7 +39,7 @@ public class UserDAO implements Serializable {
         }
     }
 
-    public boolean checkLogin(String username, String password) throws SQLException, NamingException {
+    public boolean checkLogin(String username, String password) throws SQLException, NamingException, Exception {
         boolean check = false;
         try {
             conn = MyConnection.getConnection();
@@ -60,7 +60,7 @@ public class UserDAO implements Serializable {
         return check;
     }
 
-    public UsersDTO getUserInfor(String username) throws SQLException, NamingException {
+    public UsersDTO getUserInfor(String username) throws SQLException, NamingException, Exception {
         UsersDTO dto = null;
         try {
             conn = MyConnection.getConnection();
@@ -84,7 +84,7 @@ public class UserDAO implements Serializable {
         return dto;
     }
 
-    public boolean newUser(UsersDTO dto) throws SQLException, NamingException, ParseException {
+    public boolean newUser(UsersDTO dto) throws SQLException, NamingException, ParseException, Exception {
         boolean check = false;
         try {
             conn = MyConnection.getConnection();
@@ -108,7 +108,7 @@ public class UserDAO implements Serializable {
         return check;
     }
 
-    public boolean updateStatustUser(String Email) throws SQLException, NamingException {
+    public boolean updateStatustUser(String Email) throws SQLException, NamingException, Exception {
         boolean check = false;
         try {
             conn = MyConnection.getConnection();

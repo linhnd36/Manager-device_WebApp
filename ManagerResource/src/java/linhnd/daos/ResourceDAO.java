@@ -38,7 +38,7 @@ public class ResourceDAO implements Serializable {
         }
     }
 
-    public List<ResourceDTO> searchResource(String nameResource, String categoryResource, String HightOfRole) throws SQLException, NamingException {
+    public List<ResourceDTO> searchResource(String nameResource, String categoryResource, String HightOfRole) throws SQLException, NamingException, Exception {
         List<ResourceDTO> result = null;
         ResourceDTO dto = null;
         try {
@@ -79,7 +79,7 @@ public class ResourceDAO implements Serializable {
         return result;
     }
 
-    public ResourceDTO getOneResource(String resourceId) throws SQLException, NamingException {
+    public ResourceDTO getOneResource(String resourceId) throws SQLException, NamingException, Exception {
         ResourceDTO dto = null;
         try {
             conn = MyConnection.getConnection();
